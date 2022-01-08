@@ -1,13 +1,32 @@
-<h1><%= @player_1 + ' vs ' + @player_2 %></h1>
+<head>
+  <link href="<%= url('/styles/style.css') %>" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div class="g-block-1">
+    <div class="block1">
+    </div> 
+    <div class="block2">
+      <form action="/attack" method="post" name="attack">
+        <input type="submit" value="Attack">
+      </form>
+    </div>
+  </div>
+  <div class="g-block-2">
+    <div class="block3">
+      <h1><%= @player_1_name + ' vs ' + @player_2_name %></h1>
+      <p><%= @attack_message %></p>
+    </div> 
+    <div class="block4">
+    <h4>100/100 HP</h4>
+    </div>
+</div>
 
 
-<h4>100/100 HP</h4>
-<form action="/attack" method="post" name="attack">
-<input type="submit" value="Attack">
-</form>
-
-<%= @attack_message %>
 
 
 
 
+
+
+
+</body>
