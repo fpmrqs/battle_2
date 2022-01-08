@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
 require './lib/player'
+require './lib/game'
 
 
 class Battle < Sinatra::Base
@@ -15,10 +16,7 @@ get '/' do
 end
 
 get '/play' do
-  @player_1_name = $player_1.name
-  @player_2_name = $player_2.name
-  @player_1_hp = $player_1.hp
-  @player_2_hp = $player_2.hp
+  @game = $game
   @attack_message = session[:attack_message]
   erb(:play)
 end
@@ -26,14 +24,14 @@ end
 post '/names' do
   $player_1 = Player.new(params[:player_1_name])
   $player_2 = Player.new(params[:player_2_name])
+  $game = Game.new($player_1, $player_2)
   redirect to('/play')
 end
 
 post '/attack' do
-  @player_1_name = $player_1.name
-  @player_2_name = $player_2.name
-  Game.new.attack($player_2)
-  session[:attack_message] = "#{@player_1_name} attacked #{@player_2_name}"
+  @game = $game
+  $game.attack($game.player_2)
+  session[:attack_message] = "#{@game.player_1.name} attacked #{@game.player_2.name}"
   redirect to('/play')
 end
 
