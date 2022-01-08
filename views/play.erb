@@ -4,6 +4,7 @@
 <body>
   <div class="g-block-1">
     <div class="block1">
+    <h4><%= @player_1_name %>: <%= @player_1_hp %>/100HP</h4>
     </div> 
     <div class="block2">
       <form action="/attack" method="post" name="attack">
@@ -17,7 +18,7 @@
       <p><%= @attack_message %></p>
     </div> 
     <div class="block4">
-    <h4>100/100 HP</h4>
+    <h4><%= @player_2_name %>: <%= @player_2_hp %>/100HP</h4>
     </div>
 </div>
 
