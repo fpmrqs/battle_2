@@ -32,7 +32,7 @@ end
 post '/attack' do
   @player_1_name = $player_1.name
   @player_2_name = $player_2.name
-  $player_1.attack($player_2)
+  Game.new.attack($player_2)
   session[:attack_message] = "#{@player_1_name} attacked #{@player_2_name}"
   redirect to('/play')
 end

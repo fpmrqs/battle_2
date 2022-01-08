@@ -14,8 +14,4 @@ describe Player do
   it 'takes damage' do
     expect { pabllo.take_damage }.to change { pabllo.hp }.by(-10)
   end
-
-  it 'deals damage' do
-    expect { pabllo.attack(anitta) }.to change { anitta.hp }.by(-10)
-  end
 end
